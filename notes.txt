@@ -1,0 +1,12 @@
+COOKIES
+______________
+The JSON library docs. 99% of the time, you won't need anything more than .loads() and .dumps()
+Response: A response is the data that the server, Flask, sends back to the client.
+
+make_response(): This function generates the entire response object that'll be sent back to the client, but lets you store it in a variable for further manipulation.
+
+response.set_cookie(): Sets a cookie on the response object. Takes name for the cookie and a value.
+
+json.dumps(): This method turns a Python data structure (list, string, dictionary, etc) into a JSON string.
+
+json.loads(): This method turns a JSON string into a Python object.
