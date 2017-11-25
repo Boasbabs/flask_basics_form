@@ -3,7 +3,10 @@ import json
 from flask import (Flask, render_template, request,
                    make_response, url_for, redirect)
 
+from options import DEFAULTS
+
 app = Flask("__name__")
+
 
 def get_saved_data():
     try:
@@ -17,11 +20,16 @@ def index():
     data = get_saved_data()
     return render_template("index.html", saves=data)
 
+@app.route("/builder")
+def builder():
+    data = get_saved_data()
+    return render_template("builder.html", saves=data, options=DEFAULTS)
+
 
 @app.route("/save", methods=["POST"])
 def save():
     # what we redirected is turned to response object
-    response = make_response(redirect(url_for("index")))
+    response = make_response(redirect(url_for("builder")))
     # the response is set to cookie with "character". it could be any word.
     # json.dumps is to dump strings.|| request.form is ImmutableMultiDict, key value is gotten by .items()
 
