@@ -10,3 +10,13 @@ response.set_cookie(): Sets a cookie on the response object. Takes name for the 
 json.dumps(): This method turns a Python data structure (list, string, dictionary, etc) into a JSON string.
 
 json.loads(): This method turns a JSON string into a Python object.
+
+FLASH MESSAGES
+-----------------
+flash(): This function stores a message in the session that will self-destruct after the response is returned.
+
+get_flashed_messages(): This function gets all of the flash messages stored in the session.
+
+app.secret_key: This configuration attribute stores the secret key that all messages are cryptographically signed with.
+
+{% with %}: The Flask template version of Python's with block. Let's you temporarily define a variable. Must be closed with {% endwith %}.

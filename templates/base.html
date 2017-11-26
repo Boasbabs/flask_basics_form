@@ -12,10 +12,17 @@
     {% endblock %}
 </head>
 <body>
-{% block content %}
+<div class="ui compact floating {{ saves.get('color') }} message">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <h4>{{ message }}</h4>
+            {% endfor %}
 
-
-{% endblock %}
+          {% endif %}
+      {% endwith %}
+</div>
+{% block content %}{% endblock %}
 
 {# Scripts #}
 <script src="/static/js/jquery.min.js"></script>

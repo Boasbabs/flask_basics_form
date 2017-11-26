@@ -1,11 +1,13 @@
 import json
 
 from flask import (Flask, render_template, request,
-                   make_response, url_for, redirect)
+                   make_response, url_for, redirect, flash)
 
 from options import DEFAULTS
 
 app = Flask("__name__")
+# secret key needed because of flash module needs a session which can't work without secret key
+app.secret_key = b"+*\x02X\xf5LH\x9a\x1c\x1dm|s\xbd\xf8j'\xec\xc7;M&\xd7\xbe"
 
 
 def get_saved_data():
@@ -28,6 +30,7 @@ def builder():
 
 @app.route("/save", methods=["POST"])
 def save():
+    flash("You made it! Proud of you")
     # what we redirected is turned to response object
     response = make_response(redirect(url_for("builder")))
     # the response is set to cookie with "character". it could be any word.
