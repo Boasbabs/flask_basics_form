@@ -24,53 +24,63 @@
 
 {% block content %}
     <div class="ui middle aligned center aligned grid">
-  <div class="column">
-    <h2 class="ui grey header">
-
-      <div class="content">
-        Select Background color
-      </div>
-    </h2>
-    <form class="ui large form" action="{{ url_for("save") }}" method="post">
-      <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left input">
-            <input type="text" name="name" placeholder="name" value="{{ saves.get('name', '') }}" autofocus="">
+      <div class="column">
+      <!-- message -->
+      {% with messages = get_flashed_messages() %}
+            <div class="ui compact floating {{ saves.get('color') }} message">
+            {% if messages %}
+                {% for message in messages %}
+                    <h4>{{ message }}</h4>
+                {% endfor %}
+            {% endif %}
+            </div>
+      {% endwith %}
+      <!-- header -->
+        <h2 class="ui grey header">
+          <div class="content">
+            Select Background color
           </div>
-        </div>
-          <!-- the check buttons -->
-          <div class="ui form">
-          <div class="grouped fields">
-            <label>What is your favourite color?</label>
-              {% for color in options['colors'] %}
-                  <div class="field">
-                    <div class="ui radio checkbox">
-                        <input type="radio" id="{{ color }}" name="color" value="{{ color }}"
-                        {% if saves.get('colors') == color %}
-                            checked="checked"
-                        {% endif %}>
-                     <label for="{{ color }}">{{ color }}</label>
-                    </div>
-                  </div>
-              {% endfor %}
+        </h2>
+        <form class="ui large form" action="{{ url_for("save") }}" method="post">
+          <div class="ui stacked segment">
+            <div class="field">
+              <div class="ui left input">
+                <input type="text" name="name" placeholder="name" value="{{ saves.get('name', '') }}" autofocus="">
+              </div>
+            </div>
+              <!-- the check buttons -->
+              <div class="ui form">
+              <div class="grouped fields">
+                <label>What is your favourite color?</label>
+                  {% for color in options['colors'] %}
+                      <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" id="{{ color }}" name="color" value="{{ color }}"
+                            {% if saves.get('colors') == color %}
+                                checked="checked"
+                            {% endif %}>
+                         <label for="{{ color }}">{{ color }}</label>
+                        </div>
+                      </div>
+                  {% endfor %}
+              </div>
+            </div>
+
+            <button class="ui fluid large green submit button" type="submit">Update</button>
           </div>
-        </div>
 
-        <button class="ui fluid large green submit button" type="submit">Update</button>
+          <div class="ui divider"></div>
+
+            <!-- the segments -->
+            <div class="ui secondary inverted {{ saves.get('color') }} segment">
+              <p>I am pretty noticeable but you might check out other content before you look at me.</p>
+            </div>
+
+        </form>
+
+
       </div>
-
-      <div class="ui divider"></div>
-
-        <!-- the segments -->
-        <div class="ui secondary inverted {{ saves.get('color') }} segment">
-          <p>I am pretty noticeable but you might check out other content before you look at me.</p>
-        </div>
-
-    </form>
-
-
-  </div>
-</div>
+    </div>
 
 {% endblock %}
 

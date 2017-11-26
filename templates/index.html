@@ -24,37 +24,37 @@
 
 {% block content %}
     <div class="ui middle aligned center aligned grid">
-  <div class="column">
-    <h2 class="ui blue header">
+      <div class="column">
+        <h2 class="ui blue header">
 
-      <div class="content">
-        Log-in to your account
-      </div>
-    </h2>
-    <form class="ui large form" action="{{ url_for("save") }}" method="post">
-      <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left input">
-            <input type="text" name="name" placeholder="name" value="{{ saves.get('name', '') }}" autofocus="">
+          <div class="content">
+            Log-in to your account
           </div>
-        </div>
-        <div class="field">
-          <div class="ui left input">
-            <input type="password" name="password" placeholder="Password" value="{{ saves.get('password', '') }}">
+        </h2>
+        <form class="ui large form" action="{{ url_for("save") }}" method="post">
+          <div class="ui stacked segment">
+            <div class="field">
+              <div class="ui left input">
+                <input type="text" name="name" placeholder="name" value="{{ saves.get('name', '') }}" autofocus="">
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left input">
+                <input type="password" name="password" placeholder="Password" value="{{ saves.get('password', '') }}">
+              </div>
+            </div>
+            <button class="ui fluid large blue submit button" type="submit">Login</button>
           </div>
+
+          <div class="ui error message"></div>
+
+        </form>
+
+        <div class="ui message">
+          New to us? <a href="#">Sign Up</a>
         </div>
-        <button class="ui fluid large blue submit button" type="submit">Login</button>
       </div>
-
-      <div class="ui error message"></div>
-
-    </form>
-
-    <div class="ui message">
-      New to us? <a href="#">Sign Up</a>
     </div>
-  </div>
-</div>
 
 {% endblock %}
 
